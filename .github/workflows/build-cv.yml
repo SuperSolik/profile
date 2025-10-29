@@ -16,7 +16,7 @@ jobs:
         with:
           root_file: cv.tex
       - name: Prepare pages directory
-        run: mkdir pages && mv cv.pdf pages/
+        run: mkdir pages && mv cv.pdf pages/ && cp index.html pages/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
