@@ -1,0 +1,221 @@
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+%	The MIT License (MIT)
+%
+%	Copyright (c) 2021 Jitin Nair
+%
+%	Permission is hereby granted, free of charge, to any person obtaining a copy
+%	of this software and associated documentation files (the "Software"), to deal
+%	in the Software without restriction, including without limitation the rights
+%	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+%	copies of the Software, and to permit persons to whom the Software is
+%	furnished to do so, subject to the following conditions:
+%
+%	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+%	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+%	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+%	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+%	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+%	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+%	THE SOFTWARE.
+%
+%
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT DEFINITION
+%----------------------------------------------------------------------------------------
+
+% article class because we want to fully customize the page and not use a cv template
+\documentclass[a4paper,12pt]{article}
+
+%----------------------------------------------------------------------------------------
+%	FONT
+%----------------------------------------------------------------------------------------
+
+% % fontspec allows you to use TTF/OTF fonts directly
+% \usepackage{fontspec}
+% \defaultfontfeatures{Ligatures=TeX}
+
+% % modified for ShareLaTeX use
+% \setmainfont[
+% SmallCapsFont = Fontin-SmallCaps.otf,
+% BoldFont = Fontin-Bold.otf,
+% ItalicFont = Fontin-Italic.otf
+% ]
+% {Fontin.otf}
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES
+%----------------------------------------------------------------------------------------
+\usepackage{url}
+\usepackage{parskip}
+
+%other packages for formatting
+\RequirePackage{color}
+\RequirePackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[scale=0.9]{geometry}
+
+%tabularx environment
+\usepackage{tabularx}
+
+%for lists within experience section
+\usepackage{enumitem}
+
+% centered version of 'X' col. type
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+
+%to prevent spillover of tabular into next pages
+\usepackage{supertabular}
+\usepackage{tabularx}
+\newlength{\fullcollw}
+\setlength{\fullcollw}{0.47\textwidth}
+
+%custom \section
+\usepackage{titlesec}
+\usepackage{multicol}
+\usepackage{multirow}
+
+%CV Sections inspired by:
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{10pt}{10pt}
+
+%for publications
+\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
+
+%Setup hyperref package, and colours for links
+\usepackage[unicode, draft=false]{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
+\addbibresource{citations.bib}
+\setlength\bibitemsep{1em}
+
+%for social icons
+\usepackage{fontawesome5}
+
+%debug page outer frames
+%\usepackage{showframe}
+
+
+% job listing environments
+\newenvironment{jobshort}[2]
+    {
+    \begin{tabularx}{\linewidth}{@{}l X r@{}}
+    \textbf{#1} & \hfill &  #2 \\[3.75pt]
+    \end{tabularx}
+    }
+    {
+    }
+
+\newenvironment{joblong}[2]
+    {
+    \begin{tabularx}{\linewidth}{@{}l X r@{}}
+    \textbf{#1} & \hfill &  #2 \\[3.75pt]
+    \end{tabularx}
+    \begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt,label=--]
+    }
+    {
+    \end{itemize}
+    \end{minipage}
+    }
+
+
+
+%----------------------------------------------------------------------------------------
+%	BEGIN DOCUMENT
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+% non-numbered pages
+\pagestyle{empty}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\begin{tabularx}{\linewidth}{@{} C @{}}
+\Huge{Sergei Petrov} \\[7.5pt]
+Senior Software Engineer \\[7.5pt]
+\href{mailto:sergeipetrov.dev@icloud.com}{\raisebox{-0.05\height}\faEnvelope \ sergeipetrov.dev@icloud.com} \ $|$ \
+\href{https://www.linkedin.com/in/sergei-petrov-570ab42b4/}{\raisebox{-0.05\height}\faLinkedin\ Sergei Petrov} \ $|$ \
+\href{https://github.com/SuperSolik}{\raisebox{-0.05\height}\faGithub\ SuperSolik} \\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+% EXPERIENCE SECTIONS
+%----------------------------------------------------------------------------------------
+
+%Interests/ Keywords/ Summary
+\section{Summary}
+4+ years of professional experience in software engineering, including ~1 year in a team lead role. Specialized in building data platforms and pipelines on AWS and Snowflake, with strong expertise in CI/CD, Python, and git. Full ownership of feature lifecycle: estimation, development, testing, release, and production support. Experienced in technical and architectural design, solution architecture, and team leadership. Skilled in collaborating with business analysts to refine and translate business requirements into technical tasks. Actively contribute to knowledge sharing and mentoring within teams. Proven ability to quickly learn new technologies and navigate complex codebases. AWS Certified Developer – Associate.
+
+%Experience
+\section{Work Experience}
+
+\begin{joblong}{Senior Data Engineer}{Aug 2024 - Present}
+\item Leading a cross-functional team of 10+ people
+\item Implementing event-driven data pipelines using AWS, Snowflake, and DBT
+\item Working on Nextflow pipelines and AWS compute infrastructure on Seqera Platform
+\item Building IaC and CI/CD pipelines for deployment
+\item Supporting internal legacy data platform
+\end{joblong}
+
+\begin{joblong}{Senior Software Engineer}{Aug 2023 - Jul 2024}
+\item Continued work on customer's internal data platform
+\end{joblong}
+
+\begin{joblong}{Software Engineer}{Jun 2022 - Jul 2023}
+\item Worked on customer's internal data platform
+\item Designed secure APIs for controlled data access and integrated with third-party systems
+\item Enhanced GraphQL API (refactoring, new queries/mutations) and deployed SSO-enabled playground
+\item Improved CI/CD pipelines, automated BDD e2e tests, and resolved platform issues
+\item Supported customer developers and data scientists, onboarded new team members
+\end{joblong}
+
+\begin{joblong}{Software Engineer}{Sep 2021 - May 2022}
+\item Developed ETL scripts for data cleaning and training NLP models for financial news sentiment scoring
+\item Built loan-calculation service for a car seller customer: implemented DataDog integration and observability metrics, enabled async framework support in internal libraries
+\end{joblong}
+
+\begin{jobshort}{Junior Software Engineer}{Jun 2021 - Aug 2021}
+\end{jobshort}
+
+\begin{jobshort}{Intern}{Mar 2021 - May 2021}
+\end{jobshort}
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+\section{Education}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+June 2023 & Master’s degree, Computer Science and Information Technologies (Software Engineering) at \textbf{Saint Petersburg State Electrotechnical University “LETI”} \\
+
+June 2021 & Bachelor’s degree, Computer Science and Information Technologies (Software Engineering) at \textbf{Saint Petersburg State Electrotechnical University “LETI”} \\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%	SKILLS
+%----------------------------------------------------------------------------------------
+\section{Skills}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+\textbf{Key} & Python, AWS Data Platforms, CI/CD, IaC, Ownership \\
+
+\textbf{Data Engineering} & Snowflake, DBT, SQL/NoSQL (PostgreSQL, DynamoDB, MongoDB) \\
+
+\textbf{Backend Development} & FastAPI, REST, GraphQL APIs \\
+
+\textbf{Containers \& Tooling} & Docker (layer optimization, multi-platform builds), Git (GitHub, GitLab, Bitbucket), CLI tools (grep, jq, fzf, etc.) \\
+
+\textbf{Testing} & pytest, jest, Cucumber (BDD) \\
+
+\textbf{Editors \& Environment} & Neovim (primary), VS Code, JetBrains IDEs; proficient with macOS and Linux \\
+
+\textbf{AI \& Developer Tools} & ChatGPT, Claude, GitHub Copilot, Opencode \\
+\end{tabularx}
+
+\vfill
+\center{\footnotesize Last updated: \today}
+
+\end{document}
